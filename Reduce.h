@@ -39,9 +39,9 @@ Reduce(); // Default constructor of the class
 
 bool reduce(string word, std::vector<int> occurences); //reduce method that takes a string and a vector of integers as an arguement
 
-bool export(string key, int reducedValue); // export function that will print to the directory the key and the final summed amount 
-
 //declaration of private members and methods that will not be seen by the user
 private:
+
+bool export(string key, int reducedValue); // export function that will print to the directory the key and the final summed amount 
 
 };
