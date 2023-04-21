@@ -24,6 +24,10 @@ Reduce::Reduce() {
 
 }
 
+//Constructor with one arguement. Creation of the class
+Reduce::Reduce(string outputDirectoryLocation) : outputDir{outputDirectoryLocation}
+{}
+
 //Constructor. Creation of the class
 Reduce::~Reduce() {
 
@@ -40,10 +44,31 @@ bool Reduce::reduce (string word, std::vector<int> occurences){
         totalOccurences += timesUsed; //each time through the loop, we are recording how many times the word was said
     }
 
+
     return true;
 }
 
 
 bool Reduce::export(string key, int reducedValue){
-    
+
+    string consolidatedKeyAndValue = outputDir+key+".txt"; //Creates a text doc with the key and the amount of times it was used
+    ofstream file(consolidatedKeyAndValue); //creates a text file in the specified location
+    file << key << " " << reducedValue; //writes the key and the value pair
+    file.close(); //closes the doc
+
+    string successFile = outputDir+key+"_SUCCESS.txt"; //Creates a txt file for the success notification
+    ofstream file2(successFile); //creates a text file in the specified location
+    file.close(); //closes the doc
+
+    return 1;
+}
+
+
+void Reduce::setoutputDir(){
+    	cout << "Please type in the Directory that you would like the files to be save in.: "; //asking the user which directory they would like their file to be saved in
+        cin >> outputDir;
+}
+
+string Reduce::getoutputDir(){
+    return outputDir;
 }
